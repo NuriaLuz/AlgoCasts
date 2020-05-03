@@ -14,6 +14,45 @@
 
 const Stack = require('./stack');
 
-class Queue {}
+class Queue {
+    constructor() {
+        //whenever we create an instance of a Queue, we will automatically generate 2 stacks and 
+        //assign it to this Queue class 
+        this.first = new Stack();
+        this.second = new Stack();
+    }
+
+    add(record) {
+        this.first.push(record)
+    }
+    remove() {
+        //as long as this keep returning a value right here, we will pop out a record 
+        //then push it to our second stack 
+        while (this.first.peek()) {
+            this.second.push(this.first.pop())
+            //once this loop is over, we have it on stack 2 
+        }
+        //this will be the record we want to pull - the last in
+        //before we return , we want to restore our stack back to stack first without the record we just popped
+        const record = this.second.pop()
+        while (this.second.peek()) {
+            this.first.push(this.second.pop())
+        }
+        return record;
+    }
+    peek() {
+        while (this.first.peek()) {
+            this.second.push(this.first.pop())
+            //once this loop is over, we have it on stack 2 
+        }
+        //this will be the record we want to pull - the last in
+        //before we return , we want to restore our stack back to stack first without the record we just popped
+        const record = this.second.peek() //this method is already declared on Stack
+        while (this.second.peek()) {
+            this.first.push(this.second.pop())
+        }
+        return record;
+    }
+}
 
 module.exports = Queue;

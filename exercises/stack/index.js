@@ -10,6 +10,24 @@
 //   s.pop(); // returns 2
 //   s.pop(); // returns 1
 
-class Stack {}
+class Stack {
+    constructor() {
+        //create a storage where we will add out inputs
+        this.data = []
+    }
+    //here we will push to the end of the array any new record
+    push(record) {
+        this.data.push(record)
+    }
+    //return an new array where the last input is removed
+    pop() {
+        return this.data.pop()
+    }
+     //return the last input in the array 
+    peek() {
+        return this.data[this.data.length - 1]
+
+    }
+}
 
 module.exports = Stack;

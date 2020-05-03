@@ -8,6 +8,18 @@
 //   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
 //   anagrams('Hi there', 'Bye there') --> False
 
-function anagrams(stringA, stringB) {}
+//Here we are comparing that String A is the same as String B
+function anagrams(stringA, stringB) {
+    return cleanStr(stringA) === cleanStr(stringB)
+
+}
+
+// Helper function needed to help us and as well to clean up the code
+// here we are getting rid of special characters, spaces, and then changed to lower case
+//after that we split it to an array because we want to use the sort prototype 
+//this will sort the array characters, and then we can join it back into an sorted string
+function cleanStr(str){
+    return str.replace(/[^\w]/g, '').toLowerCase().split('').sort().join('')
+}
 
 module.exports = anagrams;

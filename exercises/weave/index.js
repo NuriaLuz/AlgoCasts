@@ -24,6 +24,22 @@
 
 const Queue = require('./queue');
 
-function weave(sourceOne, sourceTwo) {}
+function weave(sourceOne, sourceTwo) {
+//create our 3rd queue that can store the combined result of src 1 & 2
+    const q = new Queue()
+//iterating through the queues , as long as either queues does not return undefined from peak()
+//we should continue 
+//as either src has an element that is being returned from peak()
+    while(sourceOne.peek() || sourceTwo.peek()){
+        //as long as either src has a peak(), add to the 3rd queue and then remove
+        if(sourceOne.peek()){
+            q.add(sourceOne.remove())
+        }
+        if(sourceTwo.peek()){
+            q.add(sourceTwo.remove())
+        }
+    }
+    return q
+}
 
 module.exports = weave;
